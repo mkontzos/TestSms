@@ -1,8 +1,6 @@
 using Sms.API;
 using Sms.API.Endpoints;
-using Sms.Application.Interfaces;
 using Sms.Infrastructure.Context;
-using Sms.Infrastructure.Repository;
 using System.Data;
 using System.Data.SqlClient;
 
@@ -13,10 +11,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<SmsDbContext>();
-builder.Services.AddSingleton<ISmsRepository, SmsRepository>();
-builder.Services.AddSingleton<ISmsVendor, SmsVendorGRRepository>();
-builder.Services.AddSingleton<ISmsVendor, SmsVendorCYRepository>();
-builder.Services.AddSingleton<ISmsVendor, SmsVendorOtherRepository>();
+
 
 builder.Services.AddTransient<IDbConnection>((sp) =>
     new SqlConnection(builder.Configuration.GetConnectionString("DefaultConnection")));
