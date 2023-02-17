@@ -1,9 +1,10 @@
 ﻿using Dapper;
-using Sms.Application.Helper;
+using Sms.Application.Helpers;
 using Sms.Application.Interfaces;
 using System.Data;
 
 namespace Sms.Infrastructure.Repository;
+
 public class SmsVendorGRRepository : ISmsVendor
 {
    private readonly IDbConnection _dbConnection;
@@ -20,7 +21,6 @@ public class SmsVendorGRRepository : ISmsVendor
          return;
       }
 
-
       if (!MessageManipulation.IsGreekMessage(sms.Message))
       {
          throw new InvalidOperationException("SMSVendorGR can only handle SMS text in Greek characters.");
@@ -33,6 +33,4 @@ public class SmsVendorGRRepository : ISmsVendor
 
       await _dbConnection.ExecuteAsync("INSERT INTO SmsMessages (PhoneNumber, Message) VALUES (@PhoneNumber, @Message)", new { PhoneNumber = sms.PhoneNumber, Message = sms.Message });
    }
-
-
 }

@@ -1,6 +1,7 @@
 ﻿using System.Text.RegularExpressions;
 
-namespace Sms.Application.Helper;
+namespace Sms.Application.Helpers;
+
 public static class MessageManipulation
 {
    public static bool IsGreekMessage(string message)

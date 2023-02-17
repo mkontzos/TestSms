@@ -3,6 +3,7 @@ using System.Data;
 using System.Data.SqlClient;
 
 namespace Sms.Infrastructure.Context;
+
 public class SmsDbContext
 {
    private readonly IDbConnection _connection;

@@ -1,3 +1,5 @@
+using Sms.API;
+using Sms.API.Endpoints;
 using Sms.Application.Interfaces;
 using Sms.Infrastructure.Context;
 using Sms.Infrastructure.Repository;
@@ -19,6 +21,8 @@ builder.Services.AddSingleton<ISmsVendor, SmsVendorOtherRepository>();
 builder.Services.AddTransient<IDbConnection>((sp) =>
     new SqlConnection(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+builder.Services.AddEndpoints(typeof(IAssemblyMarker));
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -30,11 +34,6 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-
-app.MapPost("api/v1/send-message", async (Domain.Entities.Sms sms, SmsRepository smsRepository) =>
-{
-   await smsRepository.SendSmsAsync(sms);
-
-});
+app.UseEndpoints();
 
 app.Run();

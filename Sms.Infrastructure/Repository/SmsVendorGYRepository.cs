@@ -1,5 +1,5 @@
 ﻿using Dapper;
-using Sms.Application.Helper;
+using Sms.Application.Helpers;
 using Sms.Application.Interfaces;
 using System.Data;
 
@@ -34,6 +34,4 @@ public class SmsVendorCYRepository : ISmsVendor
 
       await _dbConnection.ExecuteAsync("INSERT INTO SmsMessages (PhoneNumber, Message) VALUES (@PhoneNumber, @Message)", new { PhoneNumber = sms.PhoneNumber, Message = sms.Message });
    }
-
-
 }

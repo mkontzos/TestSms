@@ -1,9 +1,10 @@
 ﻿using Dapper;
-using Sms.Application.Helper;
+using Sms.Application.Helpers;
 using Sms.Application.Interfaces;
 using System.Data;
 
 namespace Sms.Infrastructure.Repository;
+
 public class SmsVendorOtherRepository : ISmsVendor
 {
    private readonly IDbConnection _dbConnection;

@@ -1,6 +1,7 @@
 ﻿using Sms.Application.Interfaces;
 
 namespace Sms.Infrastructure.Repository;
+
 public class SmsRepository : ISmsRepository
 {
    private readonly IDictionary<string, ISmsVendor> _vendors;

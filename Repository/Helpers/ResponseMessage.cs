@@ -1,4 +1,5 @@
-﻿namespace Sms.Application.Helper;
+﻿namespace Sms.Application.Helpers;
+
 public class ResponseMessage
 {
    public Domain.Entities.Sms? Data { get; set; }
